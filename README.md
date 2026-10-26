@@ -4,6 +4,19 @@ An AI-powered career platform for resume analysis, cover letter generation, and 
 
 **Repository:** <https://github.com/shreyasmallik075/Resume_Analyzer>
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Neo4j](https://img.shields.io/badge/Neo4j-4581C3?style=flat-square&logo=neo4j&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+
+> GitHub's language bar counts the backend and frontend together as **JavaScript**
+> because both use Node.js/Express and React. MongoDB and Neo4j are databases,
+> not programming languages, so they are shown in the architecture, badges, and
+> source files below.
+
 ---
 
 ## Features
