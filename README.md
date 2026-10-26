@@ -1,6 +1,8 @@
-# AI Interview Ready — MERN + Neo4j Full-Stack App
+# AI Interview Ready - MERN + Neo4j Full-Stack App
 
 An AI-powered career platform for resume analysis, cover letter generation, and interview practice.
+
+**Repository:** <https://github.com/shreyasmallik075/Resume_Analyzer>
 
 ---
 
@@ -260,7 +262,7 @@ Open **http://localhost:7474**, log in with `neo4j` / `devpassword`, and run:
 // Whole graph
 MATCH (n) RETURN n LIMIT 100;
 
-// The demo candidate's skills and target role
+// A resume's skills and target role
 MATCH p=(u:User)-[:HAS_RESUME]->(r:Resume)-[:HAS_SKILL]->(s:Skill)
 RETURN p LIMIT 50;
 
@@ -312,6 +314,16 @@ http://localhost:5001/api/graph/insights/64b000000000000000000001
 
 ## Environment Variables
 
+A combined reference template is available at [`.env.example`](.env.example).
+Create the real per-app files from the dedicated templates:
+
+```powershell
+Copy-Item backend\.env.example backend\.env
+Copy-Item frontend\.env.example frontend\.env
+```
+
+Then add your OpenAI key to both files. Do not commit the real `.env` files.
+
 ### backend/.env
 
 ```env
@@ -332,15 +344,19 @@ NEO4J_DATABASE=neo4j
 # Neo4j Aura example:
 # NEO4J_URI=neo4j+s://xxxxxxxx.databases.neo4j.io
 
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=sk-your-key-here
 ```
 
 ### frontend/.env
 
 ```env
 VITE_API_BASE_URL=http://localhost:5001/api
-VITE_OPENAI_API_KEY=sk-...
+VITE_OPENAI_API_KEY=sk-your-key-here
 ```
+
+> **Security:** `.env` files are ignored by Git. Only the committed
+> `backend/.env.example` and `frontend/.env.example` templates should be used.
+> If an API key was ever exposed, rotate it in the OpenAI dashboard.
 
 ---
 
@@ -397,7 +413,8 @@ It is stored on MongoDB documents and as a `(:User)` node in Neo4j.
 ## Project Structure
 
 ```text
-web_engineering_fixed/
+Resume_Analyzer/
+├── .env.example              # Combined environment reference (no secrets)
 ├── docker-compose.yml        # MongoDB + Neo4j for local development
 ├── backend/
 │   ├── config/
@@ -412,6 +429,7 @@ web_engineering_fixed/
 │   ├── scripts/
 │   │   ├── seedGraph.js      # CLI graph catalog seeder
 │   │   ├── seedDemo.js       # Demo documents + graph data
+│   │   ├── crudDemo.js       # CRUD proof for MongoDB + Neo4j
 │   │   └── verifyDatabases.js# Prints MongoDB + Neo4j proof/counts
 │   ├── services/
 │   │   └── graphService.js   # Neo4j sync + graph queries
@@ -437,7 +455,7 @@ web_engineering_fixed/
 
 ---
 
-## Bugs Fixed (vs. original repo)
+## Reliability and Correctness Fixes
 
 1. **Port mismatch** — Frontend API client pointed to port 5000; backend runs on 5001. Fixed.
 2. **PDF parser crash** — `pdf-parse` v2 exports a class (`PDFParse`), not a function. Fixed import.
