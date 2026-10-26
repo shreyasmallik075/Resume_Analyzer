@@ -1,0 +1,34 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: ai-interview-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  neo4j:
+    image: neo4j:5-community
+    container_name: ai-interview-neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474" # Neo4j Browser
+      - "7687:7687" # Bolt driver
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-devpassword}
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 1G
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
+volumes:
+  mongo_data:
+  neo4j_data:
+  neo4j_logs:

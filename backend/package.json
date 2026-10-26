@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed:graph": "node scripts/seedGraph.js",
+    "db:seed-demo": "node scripts/seedDemo.js",
+    "db:verify": "node scripts/verifyDatabases.js",
+    "db:crud-demo": "node scripts/crudDemo.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "mammoth": "^1.12.0",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "natural": "^8.1.1",
+    "neo4j-driver": "^5.28.3",
+    "openai": "^6.35.0",
+    "pdf-parse": "^2.4.5"
+  }
+}
